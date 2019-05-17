@@ -11,7 +11,7 @@
   :version "0.1.0"
   :author "Innaky"
   :license "GPLv3"
-  :depends-on ()
+  :depends-on ("cl-fad")
   :components ((:module "src"
                 :components
                 ((:file "utils"))))

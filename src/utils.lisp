@@ -1,9 +1,15 @@
 (defpackage utils
   (:use :cl)
   (:export :random-string
-	   :random-letters-and-numbers))
+	   :random-letters-and-numbers
+	   :directory-p))
 
 (in-package :utils)
+
+;; Filesystem
+(defun directory-p (string-pathname)
+  (pathnamep
+   (cl-fad:directory-exists-p string-pathname)))
 
 ;; random-string
 (defparameter *characters*
