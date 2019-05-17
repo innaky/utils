@@ -2,7 +2,8 @@
   (:use :cl)
   (:export :random-string
 	   :random-letters-and-numbers
-	   :directory-p))
+	   :directory-p
+	   :file-exists-p))
 
 (in-package :utils)
 
@@ -10,6 +11,10 @@
 (defun directory-p (string-pathname)
   (pathnamep
    (cl-fad:directory-exists-p string-pathname)))
+
+(defun file-exists-p (string-filepath)
+  (pathnamep
+   (probe-file string-filepath)))
 
 ;; random-string
 (defparameter *characters*
