@@ -3,9 +3,23 @@
   (:export :random-string
 	   :random-letters-and-numbers
 	   :directory-p
-	   :file-exists-p))
+	   :file-exists-p
+	   :pg-reverse
+	   :list+))
 
 (in-package :utils)
+
+;; lists
+
+(defun pg-reverse (lst)
+  (labels ((rev (lst acc)
+	     (if (null lst)
+		 acc
+		 (rev (cdr lst) (cons (car lst) acc)))))
+    (rev lst nil)))
+
+(defun list+ (lst n)
+  (mapcar #'(lambda (x) (+ x n)) lst))
 
 ;; Filesystem
 (defun directory-p (string-pathname)
