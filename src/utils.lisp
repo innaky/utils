@@ -5,12 +5,12 @@
 	   :directory-p
 	   :file-exists-p
 	   :pg-reverse
-	   :list+))
+	   :list+
+	   :combine-cars))
 
 (in-package :utils)
 
 ;; lists
-
 (defun pg-reverse (lst)
   (labels ((rev (lst acc)
 	     (if (null lst)
@@ -20,6 +20,16 @@
 
 (defun list+ (lst n)
   (mapcar #'(lambda (x) (+ x n)) lst))
+
+(defun combine-cars (lst1 lst2)
+  "Return a list with sublist, the sublist contain the cars (recursively) of
+the `ls1' and `lst2'."
+  (if (equal nil lst1)
+      nil
+      (cons (cons (car lst1)
+		  (cons (car lst2) nil))
+	    (combine-cars (cdr lst1)
+			  (cdr lst2)))))
 
 ;; Filesystem
 (defun directory-p (string-pathname)
