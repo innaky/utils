@@ -6,7 +6,8 @@
 	   :file-exists-p
 	   :pg-reverse
 	   :list+
-	   :combine-cars))
+	   :combine-cars
+	   :mklist))
 
 (in-package :utils)
 
@@ -30,6 +31,11 @@ the `ls1' and `lst2'."
 		  (cons (car lst2) nil))
 	    (combine-cars (cdr lst1)
 			  (cdr lst2)))))
+
+(defun mklist (obj)
+  (if (listp obj)
+      obj
+      (list obj)))
 
 ;; Filesystem
 (defun directory-p (string-pathname)
