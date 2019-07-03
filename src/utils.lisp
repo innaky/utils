@@ -51,7 +51,7 @@ the `ls1' and `lst2'."
     ((null lst) nil)
     (t (cond
 	 ((equal (car lst) elem) (rember elem (cdr lst)))
-	 (t (cons (car lst) (rember (cdr lst))))))))
+	 (t (cons (car lst) (rember elem (cdr lst))))))))
 
 ;; Filesystem
 (defun directory-p (string-pathname)
