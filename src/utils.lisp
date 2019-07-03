@@ -7,7 +7,9 @@
 	   :pg-reverse
 	   :list+
 	   :combine-cars
-	   :mklist))
+	   :mklist
+	   :rfember
+	   :rember))
 
 (in-package :utils)
 
@@ -36,6 +38,20 @@ the `ls1' and `lst2'."
   (if (listp obj)
       obj
       (list obj)))
+
+(defun rfember (elem lst)
+  (cond
+    ((null lst) nil)
+    (t (cond
+	 ((equal (car lst) elem) (cdr lst))
+	 (t (cons (car lst) (rfember elem (cdr lst))))))))
+
+(defun rember (elem lst)
+  (cond
+    ((null lst) nil)
+    (t (cond
+	 ((equal (car lst) elem) (rember elem (cdr lst)))
+	 (t (cons (car lst) (rember (cdr lst))))))))
 
 ;; Filesystem
 (defun directory-p (string-pathname)
