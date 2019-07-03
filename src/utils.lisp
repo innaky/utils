@@ -10,7 +10,8 @@
 	   :mklist
 	   :my-member
 	   :rfember
-	   :rember))
+	   :rember
+	   :firsts))
 
 (in-package :utils)
 
@@ -39,6 +40,12 @@ the `ls1' and `lst2'."
   (if (listp obj)
       obj
       (list obj)))
+
+(defun firsts (lst)
+  (cond
+    ((null lst) nil)
+    (t (listp (car lst))
+       (cons (caar lst) (firsts (cdr lst))))))
 
 (defun my-member (elem lst)
   (cond
