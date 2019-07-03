@@ -8,6 +8,7 @@
 	   :list+
 	   :combine-cars
 	   :mklist
+	   :my-member
 	   :rfember
 	   :rember))
 
@@ -38,6 +39,12 @@ the `ls1' and `lst2'."
   (if (listp obj)
       obj
       (list obj)))
+
+(defun my-member (elem lst)
+  (cond
+    ((null lst) nil)
+    (t (or (equal (car lst) elem)
+	   (my-member elem (cdr lst))))))
 
 (defun rfember (elem lst)
   (cond
