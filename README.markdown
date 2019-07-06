@@ -65,7 +65,7 @@ NIL
 ```
 
 * (**rfember** _atom lst_)     _function_:
-  Remove the first coincidence of `atom' in the `lst'.
+  Remove the first coincidence of _atom_ in the _lst_.
 
 ```lisp
 CL-USER> (rfember 'abc '(foo bar baz abc buu abc 1 2))
