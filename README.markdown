@@ -23,7 +23,7 @@ CL-USER> (pg-reverse '(1 2 3 4))
 ```
 
 * (**list+** _lst number_)    _function_:
-  Adding `n' in a all elements of the list (lst is a list of numbers).
+  Adding _number_ in a all elements of the _lst_ (_lst_ is a list of numbers).
 
 ```lisp
 CL-USER> (list+ '(1 2 3 4) 5)
@@ -47,7 +47,7 @@ CL-USER> (mklist 'abc)
 ```
 
 * (**firsts** _lst_)     _function_:
-  `lst' is a list of lists. Extract the cars of the sublists.
+  _lst_ is a list of lists. Extract the cars of the sublists.
 
 ```lisp
 CL-USER> (first '((1 2 3) (4 5 6) (7 8 9)))
@@ -55,7 +55,7 @@ CL-USER> (first '((1 2 3) (4 5 6) (7 8 9)))
 ```
 
 * (**my-member** _atom lst_)     _function_:
-  Check if `atom' exist in `lst'.
+  Check if _atom_ exist in _lst_.
 
 ```lisp
 CL-USER> (my-member 'abc '(1 3 4 abc add))
@@ -73,7 +73,7 @@ CL-USER> (rfember 'abc '(foo bar baz abc buu abc 1 2))
 ```
 
 * (**rember** _atom lst_)     _function_:
-  Remove all coincidences of `atom' in the `lst'.
+  Remove all coincidences of _atom_ in the _lst_.
 
 ```lisp
 CL-USER> (rember 'abc '(foo bar baz abc buu abc 1 2))
@@ -81,7 +81,7 @@ CL-USER> (rember 'abc '(foo bar baz abc buu abc 1 2))
 ```
 
 * (**replace-atom** _new-atom old-atom lst_)     _function_:
-  Replace the first coincidence of old-atom to new-atom
+  Replace the first coincidence of _old-atom_ to _new-atom_
 
 ```lisp
 CL-USER> (replace-atom 'new 'old '(abc def 1 old 2 3 5 old))
@@ -89,7 +89,7 @@ CL-USER> (replace-atom 'new 'old '(abc def 1 old 2 3 5 old))
 ```
 
 * (**full-replace-atom** _new old lst_)     _function_:
-  Replace all the coincidences of the old atom for the new atom in the list.
+  Replace all the coincidences of the _old_ atom for the _new_ atom in the list.
 
 ```lisp
 CL-USER> (full-replace-atom 'new 'old '(abc def 1 old 2 3 5 old))
