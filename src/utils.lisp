@@ -11,7 +11,8 @@
 	   :my-member
 	   :rfember
 	   :rember
-	   :firsts))
+	   :firsts
+	   :replace-atom))
 
 (in-package :utils)
 
@@ -66,6 +67,13 @@ the `ls1' and `lst2'."
     (t (cond
 	 ((equal (car lst) elem) (rember elem (cdr lst)))
 	 (t (cons (car lst) (rember elem (cdr lst))))))))
+
+(defun replace-atom (new old lst)
+  (cond
+    ((equal lst nil) nil)
+    (t (cond
+	 ((equal (car lst) old) (cons new (cdr lst)))
+	 (t (cons (car lst) (replace-atom new old (cdr lst))))))))
 
 ;; Filesystem
 (defun directory-p (string-pathname)
