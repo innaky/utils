@@ -80,7 +80,7 @@ the `ls1' and `lst2'."
   (cond
     ((equal lst nil) nil)
     (t (cond
-	 ((equal (car lst) old (cons new (full-replace-atom new old (cdr lst)))))
+	 ((equal (car lst) old) (cons new (full-replace-atom new old (cdr lst))))
 	 (t (cons (car lst) (full-replace-atom new old (cdr lst))))))))
 
 ;; Filesystem
