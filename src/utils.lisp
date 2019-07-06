@@ -12,7 +12,8 @@
 	   :rfember
 	   :rember
 	   :firsts
-	   :replace-atom))
+	   :replace-atom
+	   :full-replace-atom))
 
 (in-package :utils)
 
@@ -74,6 +75,13 @@ the `ls1' and `lst2'."
     (t (cond
 	 ((equal (car lst) old) (cons new (cdr lst)))
 	 (t (cons (car lst) (replace-atom new old (cdr lst))))))))
+
+(defun full-replace-atom (new old lst)
+  (cond
+    ((equal lst nil) nil)
+    (t (cond
+	 ((equal (car lst) old (cons new (full-replace-atom new old (cdr lst)))))
+	 (t (cons (car lst) (full-replace-atom new old (cdr lst))))))))
 
 ;; Filesystem
 (defun directory-p (string-pathname)
