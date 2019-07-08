@@ -95,6 +95,18 @@ CL-USER> (replace-atom 'new 'old '(abc def 1 old 2 3 5 old))
 CL-USER> (full-replace-atom 'new 'old '(abc def 1 old 2 3 5 old))
 (ABC DEF 1 NEW 2 3 5 NEW)
 ```
+
+## Filesystem utilities
+* (**directory-p** _pathname_) _function_:
+   Return true if _pathname_ is a directory
+
+```lisp
+CL-USER> (directory-p "/home/")
+T
+CL-USER> (directory-p "/home/lisper/sound.ogg")
+NIL
+```
+
 ## Author
 
 * Innaky (innaky@protonmail.com)
