@@ -107,6 +107,16 @@ CL-USER> (directory-p "/home/lisper/sound.ogg")
 NIL
 ```
 
+* (**file-exists-p** _pathname_) _function_:
+  Return true if the file exist (directories and files)
+
+```lisp
+CL-USER> (file-exists-p "/home")
+T
+CL-USER> (file-exists-p "/homeds")
+NIL
+```
+
 ## Author
 
 * Innaky (innaky@protonmail.com)
