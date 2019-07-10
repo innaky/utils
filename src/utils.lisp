@@ -14,7 +14,8 @@
 	   :firsts
 	   :replace-atom
 	   :full-replace-atom
-	   :insert-post-first))
+	   :insert-post-first
+	   :insert-post-full))
 
 (in-package :utils)
 
