@@ -13,7 +13,8 @@
 	   :rember
 	   :firsts
 	   :replace-atom
-	   :full-replace-atom))
+	   :full-replace-atom
+	   :insert-post-first))
 
 (in-package :utils)
 
@@ -80,8 +81,24 @@ the `ls1' and `lst2'."
   (cond
     ((equal lst nil) nil)
     (t (cond
-	 ((equal (car lst) old) (cons new (full-replace-atom new old (cdr lst))))
+	 ((equal (car lst) old)
+	  (cons new (full-replace-atom new old (cdr lst))))
 	 (t (cons (car lst) (full-replace-atom new old (cdr lst))))))))
+
+(defun insert-post-first (new old lst)
+  (cond
+    ((equal lst nil) nil)
+    (t (cond
+	 ((equal (car lst) old) (cons old (cons new (cdr lst))))
+	 (t (cons (car lst) (insert-post-first new old (cdr lst))))))))
+
+(defun insert-post-full (new old lst)
+  (cond
+    ((equal lst nil) nil)
+    (t (cond
+	 ((equal (car lst) old)
+	  (cons old (cons new (insert-post-full new old (cdr lst)))))
+	 (t (cons (car lst) (insert-post-full new old (cdr lst))))))))
 
 ;; Filesystem
 (defun directory-p (string-pathname)
