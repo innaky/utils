@@ -117,6 +117,16 @@ CL-USER> (file-exists-p "/homeds")
 NIL
 ```
 
+## Random String
+
+* (**random-string** _length_) _function_:
+  Return a random string of _length_
+
+```lisp
+CL-USER> (random-string 20)
+"f6RL/AqHrZ3Q]y7nXUhT"
+```
+
 ## Author
 
 * Innaky (innaky@protonmail.com)
