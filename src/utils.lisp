@@ -17,9 +17,21 @@
 	   :insert-post-first
 	   :insert-post-full
 	   :compress
-	   :uncompress))
+	   :uncompress
+	   :string-to-charlst))
 
 (in-package :utils)
+
+(defun string-to-charlst (long-str position)
+  (if (not (numberp position))
+      (format t "~A is not type numb~%" position)
+      (if (or (>= position (length long-str)) (< position 0))
+	  nil
+	  (let ((end (length long-str)))
+	    (if (equal position end)
+		nil
+		(cons (char long-str position)
+		      (string-to-charlst long-str (+ 1 position))))))))
 
 (defun compress (x)
   (if (consp x)
