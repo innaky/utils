@@ -22,7 +22,9 @@
 
 (in-package :utils)
 
-(defun string-to-charlst (long-str position)
+(defun string-to-charlst (long-str &optional (position 0))
+  "The input is a string the output a list of characters, run from character 0
+for default or for any other character, minor to length string."
   (if (not (numberp position))
       (format t "~A is not type numb~%" position)
       (if (or (>= position (length long-str)) (< position 0))
