@@ -18,9 +18,17 @@
 	   :insert-post-full
 	   :compress
 	   :uncompress
-	   :string-to-charlst))
+	   :string-to-charlst
+	   :match?))
 
 (in-package :utils)
+
+(defun match? (elem lst)
+  "`elem' exist in `lst'?. Return TRUE if exist else return NIL."
+  (if (equal nil lst)
+      nil
+      (or (equal elem (car lst))
+	  (match? elem (cdr lst)))))
 
 (defun string-to-charlst (long-str &optional (position 0))
   "The input is a string the output a list of characters, run from character 0
