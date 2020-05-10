@@ -89,12 +89,7 @@ for default or for any other character, minor to length string."
   (mapcar #'(lambda (x) (+ x n)) lst))
 
 (defun combine-cars (lst1 lst2)
-  "This function is only for documentation, the before `combine-cars' was not util
-because with `mapcar' and a lambda with two parameters (or any quantity of parameters) 
-solve the problem, this function take two parameters, and compute the same answer 
-of the useless last function `combine-cars'."
-  (mapcar #'(lambda (x y)
-	      (list x y)) lst1 lst2))
+  (mapcar #'list lst1 lst2))
 
 (defun mklist (obj)
   (if (listp obj)
