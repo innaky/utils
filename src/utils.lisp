@@ -78,6 +78,14 @@ for default or for any other character, minor to length string."
 
 
 ;; lists
+(defun lst-to-duples (lst)
+  "Input a list, output a list with the elements agrupated in tuples."
+  (cond
+    ((null lst) nil)
+    (t (cons (cons (car lst)
+		   (cons (cadr lst) nil))
+	     (lst-to-duples (cddr lst))))))
+
 (defun pg-reverse (lst)
   (labels ((rev (lst acc)
 	     (if (null lst)
