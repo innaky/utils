@@ -102,12 +102,6 @@ for default or for any other character, minor to length string."
     (t (listp (car lst))
        (cons (caar lst) (firsts (cdr lst))))))
 
-(defun my-member (elem lst)
-  (cond
-    ((null lst) nil)
-    (t (or (equal (car lst) elem)
-	   (my-member elem (cdr lst))))))
-
 (defun rfember (elem lst)
   (cond
     ((null lst) nil)
