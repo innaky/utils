@@ -20,7 +20,8 @@
 	   :uncompress
 	   :string-to-charlst
 	   :match?
-	   :substr?))
+	   :substr?
+	   :del-letter))
 
 (in-package :utils)
 
@@ -52,6 +53,12 @@ return NIL."
     (not (match? nil (mapcar #'(lambda (char)
 				 (match? char validator-str))
 			     substr)))))
+
+(defun del-letter (letter char-lst)
+  "`letter' is a char, `char-lst' is a list of chars, this function return a list of chars without the `letter'."
+  (cond ((equal char-lst nil) nil)
+	((char= letter (car char-lst)) (del-letter letter (cdr char-lst)))
+	(t (cons (car char-lst) (del-letter letter (cdr char-lst))))))
 
 (defun compress (x)
   (if (consp x)
