@@ -20,7 +20,7 @@
 	   :uncompress
 	   :string-to-charlst
 	   :match?
-	   :inside?))
+	   :substr?))
 
 (in-package :utils)
 
