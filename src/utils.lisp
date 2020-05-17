@@ -19,7 +19,8 @@
 	   :compress
 	   :uncompress
 	   :string-to-charlst
-	   :match?))
+	   :match?
+	   :inside?))
 
 (in-package :utils)
 
@@ -42,6 +43,15 @@ for default or for any other character, minor to length string."
 		nil
 		(cons (char long-str position)
 		      (string-to-charlst long-str (+ 1 position))))))))
+
+(defun substr? (in-str universe-str)
+  "If all elements of `in-str' exists inside `universe-str' the function return T, else
+return NIL."
+  (let ((substr (string-to-charlst in-str))
+	(validator-str (string-to-charlst universe-str)))
+    (not (match? nil (mapcar #'(lambda (char)
+				 (match? char validator-str))
+			     substr)))))
 
 (defun compress (x)
   (if (consp x)
