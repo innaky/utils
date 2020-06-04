@@ -21,9 +21,25 @@
 	   :string-to-charlst
 	   :match?
 	   :substr?
+	   :all-true?
 	   :del-letter))
 
 (in-package :utils)
+
+(defun all-true? (lst)
+  "`lst' is a list of bools, return T if all are True, else return Nil"
+  (if (equal nil lst)
+      t
+      (and (car lst) (all-true? (cdr lst)))))
+
+(defun match-str? (str-to-match generic-str)
+  "this function check if `str-to-match' exists inside of `generic-str' in the same order.
+`str-to-match' and `generic-str' are list of characters."
+  (if (equal str-to-match nil)
+      nil
+      (if (equal (car str-to-match) (car generic-str))
+	  (all-true? (mapcar #'char-equal str-to-match generic-str))
+	  (match-str? str-to-match (cdr generic-str)))))
 
 (defun match? (elem lst)
   "`elem' exist in `lst'?. Return TRUE if exist else return NIL."
