@@ -22,6 +22,8 @@
 	   :match?
 	   :substr?
 	   :all-true?
+	   :take
+	   :match-str?
 	   :del-letter))
 
 (in-package :utils)
@@ -32,14 +34,26 @@
       t
       (and (car lst) (all-true? (cdr lst)))))
 
-(defun match-str? (str-to-match generic-str)
-  "this function check if `str-to-match' exists inside of `generic-str' in the same order.
-`str-to-match' and `generic-str' are list of characters."
-  (if (equal str-to-match nil)
+(defun take (num lst)
+  "This function take a number and a list and return a list with `num' elements."
+  (if (equal str nil)
       nil
-      (if (equal (car str-to-match) (car generic-str))
-	  (all-true? (mapcar #'char-equal str-to-match generic-str))
-	  (match-str? str-to-match (cdr generic-str)))))
+      (if (> num 0)
+	  (cons (car lst)
+		(take (- num 1) (cdr lst))))))
+
+(defun match-str? (str-to-match generic-str)
+  "This function check if `str-to-match' exists inside of `generic-str' in the same order.
+`str-to-match' and `generic-str' are list of characters."
+  (let ((end (length str-to-match)))
+    (if (equal generic-str nil)
+	nil
+	(if (equal (car str-to-match) (car generic-str))
+	    (let ((check (take end (cons (car generic-str) (cdr generic-str)))))
+	      (if (all-true? (mapcar #'char-equal str-to-match check))
+		  t
+		  (match-str? str-to-match (cdr generic-str))))
+	    (match-str? str-to-match (cdr generic-str))))))
 
 (defun match? (elem lst)
   "`elem' exist in `lst'?. Return TRUE if exist else return NIL."
