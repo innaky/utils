@@ -36,7 +36,7 @@
 
 (defun take (num lst)
   "This function take a number and a list and return a list with `num' elements."
-  (if (equal str nil)
+  (if (equal lst nil)
       nil
       (if (> num 0)
 	  (cons (car lst)
