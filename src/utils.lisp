@@ -23,6 +23,7 @@
 	   :substr?
 	   :all-true?
 	   :take
+	   :after
 	   :match-str?
 	   :del-letter))
 
@@ -41,6 +42,14 @@
       (if (> num 0)
 	  (cons (car lst)
 		(take (- num 1) (cdr lst))))))
+
+(defun after (num lst)
+  "This function return the cdr of elements after `num' jumps or `num' loop times."
+  (if (equal nil lst)
+      nil
+      (if (> num 0)
+	  (after (decf num) (cdr lst))
+	  (cdr lst))))
 
 (defun match-str? (str-to-match generic-str)
   "This function check if `str-to-match' exists inside of `generic-str' in the same order.
