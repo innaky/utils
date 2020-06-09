@@ -20,6 +20,7 @@
 	   :uncompress
 	   :string-to-charlst
 	   :match?
+	   :count-elem
 	   :substr?
 	   :all-true?
 	   :take
@@ -28,6 +29,15 @@
 	   :del-letter))
 
 (in-package :utils)
+
+(defun count-elem (elem lsts)
+  "Return a list of count macth of `elem' over `lsts'"
+  (labels ((in-count-elem (lst)
+	     (if (consp lst)
+		 (+ (if (eq (car lst) elem) 1 0)
+		    (in-count-elem (cdr lst)))
+		 0)))
+    (mapcar #'in-count-elem lsts)))
 
 (defun all-true? (lst)
   "`lst' is a list of bools, return T if all are True, else return Nil"
