@@ -26,9 +26,17 @@
 	   :take
 	   :after
 	   :match-str?
+	   :sublst
 	   :del-letter))
 
 (in-package :utils)
+
+(defun sublst (lst)
+  "Transform all elements of the `lst' in a lst."
+  (if (equal nil lst)
+      nil
+      (cons (list (car lst))
+	    (sublst (cdr lst)))))
 
 (defun count-elem (elem lsts)
   "Return a list of count macth of `elem' over `lsts'"
