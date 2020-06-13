@@ -27,9 +27,19 @@
 	   :after
 	   :match-str?
 	   :sublst
-	   :del-letter))
+	   :del-letter
+	   :bool-to-num))
 
 (in-package :utils)
+
+(defun bool-to-num (lst-bool)
+  "Transform True in 1 and NIL in 0."
+  (if (equal nil lst-bool)
+      nil
+      (cons (if (equal (car lst-bool) t)
+		1
+		0)
+	    (bool-to-num (cdr lst-bool)))))
 
 (defun sublst (lst)
   "Transform all elements of the `lst' in a lst."
