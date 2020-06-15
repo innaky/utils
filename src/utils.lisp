@@ -28,9 +28,17 @@
 	   :match-str?
 	   :sublst
 	   :del-letter
-	   :bool-to-num))
+	   :bool-to-num
+	   :last-space))
 
 (in-package :utils)
+
+(defun last-space (lst)
+  "Add an #\space character in the last of a list."
+  (if (equal nil lst)
+      (cons #\space nil)
+      (cons (car lst)
+	    (last-space (cdr lst)))))
 
 (defun bool-to-num (lst-bool)
   "Transform True in 1 and NIL in 0."
