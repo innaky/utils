@@ -29,16 +29,21 @@
 	   :sublst
 	   :del-letter
 	   :bool-to-num
-	   :last-space))
+	   :add-char-in-tail
+	   :add-char-in-head-tail))
 
 (in-package :utils)
 
-(defun last-space (lst)
-  "Add an #\space character in the last of a list."
+(defun add-char-in-tail (char lst)
+  "Add a `char' in the tail of `lst'"
   (if (equal nil lst)
-      (cons #\space nil)
+      (cons char nil)
       (cons (car lst)
-	    (last-space (cdr lst)))))
+	    (add-char-in-tail char (cdr lst)))))
+
+(defun add-char-in-head-tail (char lst)
+  "Add `char' in the head and tail of `lst'"
+  (cons char (add-char-in-tail char lst)))
 
 (defun bool-to-num (lst-bool)
   "Transform True in 1 and NIL in 0."
