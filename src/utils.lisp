@@ -173,8 +173,6 @@ return NIL."
       nil
       (cons elt (list-of (- n 1) elt))))
 
-
-;; lists
 (defun lst-to-duples (lst)
   "Input a list, output a list with the elements agrupated in tuples."
   (cond
@@ -222,21 +220,14 @@ return NIL."
 	 (t (cons (car lst) (rember elem (cdr lst))))))))
 
 (defun replace-atom (new old lst)
-  (cond
-    ((equal lst nil) nil)
-    (t (cond
-	 ((equal (car lst) old) (cons new (cdr lst)))
-	 (t (cons (car lst) (replace-atom new old (cdr lst))))))))
+  "Replace the `old' by `new' if exists in `lst'. If not exists the `old' element return
+the same `lst'."
+  (cond ((equal lst nil) nil)
+    (t (cond ((equal (car lst) old) (cons new (replace-atom new old (cdr lst))))
+	     (t (cons (car lst) (replace-atom new old (cdr lst))))))))
 
-(defun full-replace-atom (new old lst)
-  (cond
-    ((equal lst nil) nil)
-    (t (cond
-	 ((equal (car lst) old)
-	  (cons new (full-replace-atom new old (cdr lst))))
-	 (t (cons (car lst) (full-replace-atom new old (cdr lst))))))))
-
-(defun insert-post-first (new old lst)
+(defun insert-post-elem (new old lst)
+  "If `old' match `new' is added in the next position. Only in the first match."
   (cond
     ((equal lst nil) nil)
     (t (cond
@@ -244,6 +235,7 @@ return NIL."
 	 (t (cons (car lst) (insert-post-first new old (cdr lst))))))))
 
 (defun insert-post-full (new old lst)
+  "If `old' matchs `new' is added and check the rest of the lst."
   (cond
     ((equal lst nil) nil)
     (t (cond
