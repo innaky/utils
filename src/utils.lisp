@@ -232,7 +232,7 @@ the same `lst'."
     ((equal lst nil) nil)
     (t (cond
 	 ((equal (car lst) old) (cons old (cons new (cdr lst))))
-	 (t (cons (car lst) (insert-post-first new old (cdr lst))))))))
+	 (t (cons (car lst) (insert-post-elem new old (cdr lst))))))))
 
 (defun insert-post-full (new old lst)
   "If `old' matchs `new' is added and check the rest of the lst."
