@@ -30,9 +30,18 @@
 	   :del-letter
 	   :bool-to-num
 	   :add-char-in-tail
-	   :add-char-in-head-tail))
+	   :add-char-in-head-tail
+	   :flatten))
 
 (in-package :utils)
+
+(defun flatten (lst)
+  "Take a list and return a flat list."
+  (labels ((flat (elem acc)
+	     (cond ((equal elem nil) acc)
+		   ((atom elem) (cons elem acc))
+		   (t (flat (car elem) (flat (cdr elem) acc))))))
+    (flat lst nil)))
 
 (defun add-char-in-tail (char lst)
   "Add a `char' in the tail of `lst'"
