@@ -200,8 +200,8 @@ return NIL."
 (defun list+ (lst n)
   (mapcar #'(lambda (x) (+ x n)) lst))
 
-(defun combine-cars (lst1 lst2)
-  (mapcar #'list lst1 lst2))
+(defun combine-cars (list &rest lists)
+  (apply #'mapcar #'list list lists))
 
 (defun mklist (obj)
   (if (listp obj)
